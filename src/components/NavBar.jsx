@@ -1,4 +1,5 @@
 import React from 'react';
+import { navLinks } from '../constants';
 
 const NavBar = () => {
   return (
@@ -34,15 +35,7 @@ const NavBar = () => {
           padding: 0,
           gap: '20px'
         }}>
-          {[
-            {label: "Store"},
-            {label: "Mac"},
-            {label: "iPad"},
-            {label: "iPhone"},
-            {label: "Watch"},
-            {label: "Vision"},
-            {label: "AirPods"},
-          ].map(({label}) => (
+          {navLinks.map(({label}) => (
             <li key={label}>
               <a 
                 href={`#${label.toLowerCase()}`} 

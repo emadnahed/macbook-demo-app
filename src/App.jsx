@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import NavBar from "./components/NavBar.jsx";
 import Hero from "./components/Hero.jsx";
 import ProductViewer from "./components/ProductViewer.jsx";
-import useMacbookStore from "./store";
+import useMacbookStore from "./store/index.js";
 
 gsap.registerPlugin(ScrollTrigger);
 

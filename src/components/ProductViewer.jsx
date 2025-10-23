@@ -1,4 +1,4 @@
-import useMacbookStore from "../store/index.js";
+import useMacbookStore, { COLORS } from "../store/index.js";
 import clsx from "clsx";
 import {Canvas} from "@react-three/fiber";
 import {Box, OrbitControls} from "@react-three/drei";
@@ -23,12 +23,29 @@ const ProductViewer = () => {
                 <div className="flex-center gap-5 mt-5">
                     <div className="color-control">
                         <div
-                            onClick={() => setColor('#adb5bd')}
-                            className={clsx('bg-neutral-300', color === '#adb5bd' && 'active')}
+                            onClick={() => setColor(COLORS.SILVER)}
+                            style={{ backgroundColor: COLORS.SILVER }}
+                            className={clsx(color === COLORS.SILVER && 'active')}
                         />
                         <div
-                            onClick={() => setColor('#2e2c2e')}
-                            className={clsx('bg-neutral-900', color === '#2e2c2e' && 'active')}
+                            onClick={() => setColor(COLORS.SPACE_GRAY)}
+                            style={{ backgroundColor: COLORS.SPACE_GRAY }}
+                            className={clsx(color === COLORS.SPACE_GRAY && 'active')}
+                        />
+                        <div
+                            onClick={() => setColor(COLORS.SPACE_BLACK)}
+                            style={{ backgroundColor: COLORS.SPACE_BLACK }}
+                            className={clsx(color === COLORS.SPACE_BLACK && 'active')}
+                        />
+                        <div
+                            onClick={() => setColor(COLORS.MIDNIGHT)}
+                            style={{ backgroundColor: COLORS.MIDNIGHT }}
+                            className={clsx(color === COLORS.MIDNIGHT && 'active')}
+                        />
+                        <div
+                            onClick={() => setColor(COLORS.GOLD)}
+                            style={{ backgroundColor: COLORS.GOLD }}
+                            className={clsx(color === COLORS.GOLD && 'active')}
                         />
                     </div>
 

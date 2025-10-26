@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar.jsx";
 import Hero from "./components/Hero.jsx";
 import ProductViewer from "./components/ProductViewer.jsx";
 import useMacbookStore from "./store/index.js";
+import Showcase from "./components/Showcase.jsx";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,6 +19,7 @@ const App = () => {
       <NavBar />   
       <Hero />
       <ProductViewer />
+      <Showcase />
     </main>
   );
 };

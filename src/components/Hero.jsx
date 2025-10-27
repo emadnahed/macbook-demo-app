@@ -3,6 +3,9 @@ import React, { useRef, useEffect } from 'react'
 const Hero = () => {
     const videoRef = useRef();
     useEffect(() => {
+        // Animation Steps (Hero):
+        // 1) Grab the video element via ref after mount.
+        // 2) Increase playbackRate to 2x to create a snappier motion feel.
         if (videoRef.current) videoRef.current.playbackRate = 2;        
     }, []);
   return (

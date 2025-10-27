@@ -21,6 +21,15 @@ const ProductViewer = () => {
                 <p className="info">Macbook Pro | Available in 14" & 16" in Space Gray & Dark colors</p>
 
                 <div className="flex-center gap-5 mt-5">
+                    {/* Animation/Interaction Steps (Three.js viewer):
+                        1) Color state drives material color in the 3D model (via store -> ModelSwitcher/Model).
+                        2) Scale state switches 14"/16" by adjusting model scale factor.
+                        3) <Canvas> from @react-three/fiber sets WebGL scene + camera.
+                        4) <StudioLights> adds lights affecting shading/highlights.
+                        5) <ModelSwitcher> selects model and applies props (scale, color, responsiveness).
+                        6) On mobile, scale is reduced to fit screen (isMobile).
+                        7) User clicks below controls to trigger state updates -> re-rendered 3D scene.
+                    */}
                     <div className="color-control">
                         <div
                             onClick={() => setColor(COLORS.SILVER)}
@@ -67,10 +76,11 @@ const ProductViewer = () => {
             </div>
 
             <Canvas id="canvas" camera={{ position: [0, 2, 5], fov: 50, near: 0.1, far: 100}}>
-                
+                {/* Scene Composition: camera above/forward; fov tuned for product framing */}
                 <StudioLights />
 
                 <ModelSwitcher scale={isMobile ? scale - 0.03 : scale} isMobile={isMobile} />
+                {/* Note: OrbitControls is imported but not used here. If added, it enables mouse/touch orbiting. */}
             </Canvas>
             
         </section>

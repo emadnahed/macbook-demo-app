@@ -8,7 +8,7 @@ export const COLORS = {
   MIDNIGHT: "#2c3e50"
 };
 
-const DEFAULT_COLOR = COLORS.SPACE_GRAY;
+const DEFAULT_COLOR = COLORS.SILVER;
 
 const useMacbookStore = create((set) => ({
     color: DEFAULT_COLOR,    

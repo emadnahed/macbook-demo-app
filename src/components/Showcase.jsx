@@ -6,16 +6,6 @@ const Showcase = () => {
     const isTablet = useMediaQuery({ query: '(max-width: 1024px)'});
 
     useGSAP(() => {
-        // Animation Steps (Showcase — GSAP + ScrollTrigger):
-        // 1) Guard: disable heavy scroll animations on tablets/smaller for perf/layout.
-        // 2) Create a gsap.timeline with ScrollTrigger:
-        //    - trigger: pin the #showcase section while scrolling through it.
-        //    - start/end: animate from section top until its bottom hits top of viewport.
-        //    - scrub: true to tie progress to scroll position (smooth linkage).
-        //    - pin: true to keep the section fixed during the sequence.
-        // 3) Sequence:
-        //    a) Scale up the masked logo slightly for emphasis.
-        //    b) Fade in and slide up the content area.
         if(!isTablet) {
             const timeline = gsap.timeline({
                 scrollTrigger: {

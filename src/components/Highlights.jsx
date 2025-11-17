@@ -1,8 +1,69 @@
 import React from 'react'
+import { useMediaQuery } from 'react-responsive'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
 
 const Highlights = () => {
+
+  const isMobile = useMediaQuery({ query: '(max-width: 1024px)' })
+
+
+  /**
+   * GSAP Animation Configuration:
+   * - Animates .left-column and .right-column elements on scroll
+   * - Trigger: When #highlights section enters viewport
+   *   - Mobile: Starts when section bottom hits viewport bottom
+   *   - Desktop: Starts when section top hits viewport center
+   * - Animation: Fades in and slides up elements
+   * - Duration: 1 second with smooth power1.inOut easing
+   * - Stagger: 0.5s delay between animating columns
+   */
+  useGSAP(() => {
+    gsap.to([".left-column", ".right-column"], {
+      scrollTrigger: {
+        trigger: "#highlights",
+        start: isMobile ? "bottom bottom" : "top center",
+      },
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: 'power1.inOut',
+      stagger: 0.5,
+    })
+  }, [isMobile])
+
   return (
-    <div>Highlights</div>
+    <section id='highlights'>
+      <h2>There's never been a better time to upgrade.</h2>
+      <h3>Here's what you get with the new Macbook Pro</h3>
+
+      <div className="masonry">
+        <div className="left-column">
+          <div>
+            <img src="/laptop.png" alt="Laptop" />
+            <p>Fly through demanding tasks upto 9.8x faster.</p>
+          </div>
+          <div>
+            <img src="/sun.png" alt="Sun" />
+            <p>A Stunning <br />Liquid Retina XDR <br />Display.</p>
+          </div>
+        </div>
+        <div className="right-column">
+          <div className="apple-gradient">
+            <img src="/ai.png" alt="AI" />
+            <p>Built for <br /> <span>Apple Intelligence.</span></p>
+          </div>
+          <div>
+            <img src="/battery.png" alt="Battery" />
+            <p>Up to
+              <span className="green-gradient">{' '}14 more hours{' '}</span>
+              battery life.
+              <span className="text-dark-100">{' '}(Up to 24 hours total.)
+              </span></p>
+          </div>
+        </div>
+      </div>
+    </section>
   )
 }
 

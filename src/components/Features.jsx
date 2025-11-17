@@ -15,6 +15,19 @@ const ModelScroll = () => {
     const isMobile = useMediaQuery({ query: '(max-width: 1024px)' });
     const { setTexture } = useMacbookStore();
 
+    /**
+     * GSAP Animation Configuration:
+     * - 3D Model Rotation:
+     *   - Trigger: Pins to viewport while scrolling through #f-canvas
+     *   - Animation: Rotates the 3D model 360 degrees on Y-axis
+     *   - Easing: Smooth power1.inOut for natural motion
+     * 
+     * - Feature Content Sync:
+     *   - Scroll-triggered timeline for feature content
+     *   - Changes MacBook texture based on scroll position
+     *   - Fades in feature boxes with individual delays
+     *   - Uses featureSequence array for configuration
+     */
     useGSAP(() => {
         // 3D MODEL ROTATION ANIMATION
         const modelTimeline = gsap.timeline({

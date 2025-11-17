@@ -5,6 +5,17 @@ import gsap from 'gsap';
 const Showcase = () => {
     const isTablet = useMediaQuery({ query: '(max-width: 1024px)'});
 
+    /**
+     * GSAP Animation Configuration:
+     * - Pinned Scroll Animation:
+     *   - Trigger: When #showcase section is in view
+     *   - Pins the section while scrolling
+     *   - On desktop/tablet only (disabled on mobile)
+     * - Animation Sequence:
+     *   1. Scales up the mask image to 110%
+     *   2. Fades in and slides up the content section
+     * - Easing: power1.in for smooth deceleration
+     */
     useGSAP(() => {
         if(!isTablet) {
             const timeline = gsap.timeline({

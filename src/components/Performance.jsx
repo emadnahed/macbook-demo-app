@@ -11,6 +11,20 @@ const Performance = () => {
     const isMobile = useMediaQuery({ query: "(max-width: 1024px)" });
     const sectionRef = useRef(null);
 
+    /**
+     * GSAP Animation Configuration:
+     * - Text Animation: Fades in and moves up text content as it scrolls into view
+     *   - Trigger: When text elements enter viewport (top of text reaches bottom of viewport)
+     *   - Animation: Fades in from 0 to 1 opacity while moving up 10px
+     *   - Easing: Smooth power1.out for natural deceleration
+     * 
+     * - Desktop-only Image Animation:
+     *   - Timeline that pins to scroll position
+     *   - Positions performance images (p1-p7) based on performanceImgPositions constants
+     *   - Skips p5 image as per requirements
+     *   - Smooth power1.inOut easing for fluid motion
+     *   - Responsive: Disables on mobile devices (width < 1024px)
+     */
     useGSAP(
         () => {
             const sectionEl = sectionRef.current;

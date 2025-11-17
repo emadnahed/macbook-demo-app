@@ -34,28 +34,20 @@ export default function MacbookModel(props) {
     if (loadingRef.current) return;
     loadingRef.current = true;
 
-    const loadTextures = async () => {
-      const textureMap = {};
+    const loadTextures = () => {
+      featureSequence.forEach((feature) => {
+        const video = document.createElement('video');
+        video.src = feature.videoPath;
+        video.muted = true;
+        video.playsInline = true;
+        video.preload = 'auto';
+        video.crossOrigin = 'anonymous';
+        video.load();
 
-      await Promise.all(
-        featureSequence.map((feature) => {
-          return new Promise((resolve) => {
-            const video = document.createElement('video');
-            video.src = feature.videoPath;
-            video.muted = true;
-            video.playsInline = true;
-            video.preload = 'auto';
-            video.crossOrigin = 'anonymous';
-            video.load();
-
-            video.oncanplay = () => {
-              textureMap[feature.videoPath] = true;
-              setLoadedTextures({ ...textureMap });
-              resolve();
-            };
-          });
-        })
-      );
+        video.oncanplaythrough = () => {
+          setLoadedTextures((prev) => ({ ...prev, [feature.videoPath]: true }));
+        };
+      });
     };
 
     loadTextures();

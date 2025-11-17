@@ -45,22 +45,13 @@ const ModelScroll = () => {
         // Add a small delay to ensure textures are preloaded
         const textureDelay = 0.5; // seconds
 
-        // Content & Texture Sync
-        timeline
-            .call(() => setTexture('/videos/feature-1.webm'), undefined, textureDelay)
-            .to('.box1', { opacity: 1, y: 0, delay: 1 })
-
-            .call(() => setTexture('/videos/feature-2.webm'))
-            .to('.box2', { opacity: 1, y: 0 })
-
-            .call(() => setTexture('/videos/feature-3.webm'))
-            .to('.box3', { opacity: 1, y: 0 })
-
-            .call(() => setTexture('/videos/feature-4.webm'))
-            .to('.box4', { opacity: 1, y: 0 })
-
-            .call(() => setTexture('/videos/feature-5.webm'))
-            .to('.box5', { opacity: 1, y: 0 });
+        // Content & Texture Sync - dynamically generated from featureSequence
+        featureSequence.reduce((tl, feature, index) => {
+            const position = index === 0 ? textureDelay : undefined;
+            return tl
+                .call(() => setTexture(feature.videoPath), undefined, position)
+                .to(feature.boxClass, { opacity: 1, y: 0, delay: feature.delay });
+        }, timeline);
     }, []);
 
     return (

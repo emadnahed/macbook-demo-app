@@ -121,4 +121,12 @@ const featureSequence = [
     { videoPath: "/videos/feature-5.webm", boxClass: ".box5", delay: 0 },
 ];
 
-export { navLinks, noChangeParts, performanceImages, performanceImgPositions, features, featureSequence };
+const footerLinks = [
+    { label: "Privacy Policy", link: "#" },
+    { label: "Terms of Use", link: "#" },
+    { label: "Sales Policy", link: "#" },
+    { label: "Legal", link: "#" },
+    { label: "Site Map", link: "#" },
+];
+
+export { navLinks, noChangeParts, performanceImages, performanceImgPositions, features, featureSequence, footerLinks };
